@@ -6,7 +6,7 @@ with open('data/inifile.ini') as file:
         if len(line) == 0 or line[0] == '#':
             continue
 
-        if line[0] == '[' and line[-1] == ']':
+        if line.startswith('[') and line.endswith(']'):
             cur_parent_key = line[1:-1]
             result_hash[cur_parent_key] = {}
         elif line.count('=') == 1:
