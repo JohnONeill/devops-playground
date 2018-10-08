@@ -1,6 +1,11 @@
-FROM node:8
-EXPOSE 3000
+FROM node:8 as build
+
 WORKDIR /app
 COPY package.json index.js ./
 RUN npm install
-CMD ["npm", "start"]
+
+FROM gcr.io/distroless/nodejs
+
+COPY --from=build /app /
+EXPOSE 3000
+CMD ["index.js"]
