@@ -1,0 +1,1 @@
+import re; print(re.sub("Agent [A-Za-z]*", lambda matchObj: "Agent " + matchObj.group(0).split(' ')[1][1:] + matchObj.group(0).split(' ')[1][0] + "ay", "Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent."))
